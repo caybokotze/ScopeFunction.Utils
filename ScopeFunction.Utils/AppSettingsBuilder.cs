@@ -11,9 +11,9 @@ namespace ScopeFunction.Utils
 {
     public static class AppSettingsBuilder
     {
-        public static AppSettings CreateAppSettings()
+        public static T CreateAppSettings<T>() where T : class
         {
-            return GetSettingsFrom(
+            return GetSettingsFrom<T>(
                 CreateConfigurationRoot()
             );
         }
@@ -41,8 +41,8 @@ namespace ScopeFunction.Utils
             return lines.All(l => !re.Match(l).Success);
         }
 
-        private static AppSettings GetSettingsFrom(
-            IConfigurationRoot config)
+        private static T GetSettingsFrom<T>(
+            IConfigurationRoot config) where T : class
         {
             var providedConfig = config
                 ?.GetSection("Settings")
@@ -51,7 +51,7 @@ namespace ScopeFunction.Utils
                 ?.ToDictionary(s => s.Key, s => s.Value);
             try
             {
-                return providedConfig.FuzzyDuckAs<AppSettings>(true);
+                return providedConfig.FuzzyDuckAs<T>(true);
             }
             catch (UnDuckableException ex)
             {
