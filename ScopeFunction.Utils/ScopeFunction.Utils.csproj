@@ -6,20 +6,15 @@
         <Description>Basic utlities that are used for common tasks within dotnet.</Description>
         <Copyright>Merge Digital</Copyright>
         <PackageProjectUrl>https://github.com/caybokotze/scopefunction.utils</PackageProjectUrl>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.2.1</PackageVersion>
         <PackageLicenseUrl>https://raw.githubusercontent.com/caybokotze/scopefunction.utils/master/scopefunction.utils/license.txt</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/caybokotze/scopefunction.utils</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
-        <PackageReleaseNotes>Add MapTo functionality</PackageReleaseNotes>
+        <PackageReleaseNotes>Remove dependencies which are not required</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="12.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-      <PackageReference Include="PeanutButter.DuckTyping" Version="2.0.38" />
-      <PackageReference Include="PeanutButter.Utils" Version="2.0.38" />
     </ItemGroup>
 
     <ItemGroup>
