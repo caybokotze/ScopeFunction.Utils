@@ -171,6 +171,10 @@ public class FooDetails
 
 public class ReadOnlyFooDto
 {
+    public ReadOnlyFooDto()
+    {
+        
+    }
     public ReadOnlyFooDto(int id, string name)
     {
         Id = id;

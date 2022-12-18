@@ -6,7 +6,7 @@
         <Description>Basic utlities that are used for common tasks within dotnet.</Description>
         <Copyright>Merge Digital</Copyright>
         <PackageProjectUrl>https://github.com/caybokotze/scopefunction.utils</PackageProjectUrl>
-        <PackageVersion>1.3.0</PackageVersion>
+        <PackageVersion>1.3.1</PackageVersion>
         <PackageLicenseFile>license.txt</PackageLicenseFile>
         <PackageLicense>https://raw.githubusercontent.com/caybokotze/scopefunction.utils/master/scopefunction.utils/license.txt</PackageLicense>
         <RepositoryUrl>https://github.com/caybokotze/scopefunction.utils</RepositoryUrl>
