@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using AutoMapper;
 
 namespace ScopeFunction.Utils
 {
     public static class AutoMap
     {
-        public static TDestination? MapTo<TDestination>(this object? source) where TDestination : class, new()
+        public static TDestination MapTo<TDestination>(this object source) where TDestination : class, new()
         {
             if (source is null)
             {
-                return null;
+                throw new NullReferenceException("Can not configure entity mappings for a null object");
             }
             
             var config = new MapperConfiguration(cfg =>
@@ -24,12 +23,12 @@ namespace ScopeFunction.Utils
             return mapper.Map(source, new TDestination());
         }
         
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? source)
-            where TSource : class where TDestination : class
+        public static TDestination MapTo<TSource, TDestination>(this TSource source)
+            where TSource : class where TDestination : class, new()
         {
             if (source is null)
             {
-                return null;
+                throw new NullReferenceException("Can not configure entity mappings for a null object");
             }
             
             var config = new MapperConfiguration(cfg =>
@@ -42,12 +41,12 @@ namespace ScopeFunction.Utils
             return mapper.Map<TSource, TDestination>(source);
         }
 
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? source, TDestination destination)
-            where TSource : class where TDestination : class
+        public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination)
+            where TSource : class where TDestination : class, new()
         {
             if (source is null)
             {
-                return null;
+                throw new NullReferenceException("Can not configure entity mappings for a null object");
             }
             
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<TSource, TDestination>(); });
@@ -57,12 +56,12 @@ namespace ScopeFunction.Utils
             return mapper.Map(source, destination);
         }
 
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? source, TDestination destination,
-            Func<TSource, string[]> ignoreSourceValue) where TSource : class where TDestination : class
+        public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination,
+            Func<TSource, string[]> ignoreSourceValue) where TSource : class, new() where TDestination : class, new()
         {
             if (source is null)
             {
-                return null;
+                throw new NullReferenceException("Can not configure entity mappings for a null object");
             }
             
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<TSource, TDestination>(); });
