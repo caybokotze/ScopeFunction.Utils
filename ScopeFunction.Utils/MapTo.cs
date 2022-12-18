@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using AutoMapper;
 
 namespace ScopeFunction.Utils
@@ -22,10 +24,10 @@ namespace ScopeFunction.Utils
             return mapper.Map(source, new TDestination());
         }
         
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? objectSource)
+        public static TDestination? MapTo<TSource, TDestination>(this TSource? source)
             where TSource : class where TDestination : class
         {
-            if (objectSource is null)
+            if (source is null)
             {
                 return null;
             }
@@ -37,13 +39,13 @@ namespace ScopeFunction.Utils
 
             var mapper = new Mapper(config);
 
-            return mapper.Map<TSource, TDestination>(objectSource);
+            return mapper.Map<TSource, TDestination>(source);
         }
 
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? objectSource, TDestination destination)
+        public static TDestination? MapTo<TSource, TDestination>(this TSource? source, TDestination destination)
             where TSource : class where TDestination : class
         {
-            if (objectSource is null)
+            if (source is null)
             {
                 return null;
             }
@@ -52,13 +54,13 @@ namespace ScopeFunction.Utils
 
             var mapper = new Mapper(config);
 
-            return mapper.Map(objectSource, destination);
+            return mapper.Map(source, destination);
         }
 
-        public static TDestination? MapTo<TSource, TDestination>(this TSource? objectSource, TDestination destination,
-            Action<TSource> overrideSource) where TSource : class where TDestination : class
+        public static TDestination? MapTo<TSource, TDestination>(this TSource? source, TDestination destination,
+            Func<TSource, string[]> ignoreSourceValue) where TSource : class where TDestination : class
         {
-            if (objectSource is null)
+            if (source is null)
             {
                 return null;
             }
@@ -67,9 +69,25 @@ namespace ScopeFunction.Utils
 
             var mapper = new Mapper(config);
 
-            overrideSource(objectSource);
+            var mappings = ignoreSourceValue(source);
 
-            return mapper.Map(objectSource, destination);
+            foreach (var property in source.GetType().GetProperties())
+            {
+                if (!mappings.Contains(property.Name))
+                {
+                    continue;
+                }
+                
+                var destinationValue = destination.GetType().GetProperty(property.Name)?.GetValue(destination);
+                if (destinationValue is null)
+                {
+                    continue;
+                }
+                
+                property.SetValue(source, destinationValue);
+            }
+
+            return mapper.Map(source, destination);
         }
     }
 }
