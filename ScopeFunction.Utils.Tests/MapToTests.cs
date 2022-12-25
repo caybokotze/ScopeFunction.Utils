@@ -37,36 +37,74 @@ namespace ScopeFunction.Utils.Tests
                 Expect(secondFoo.Details?.Details).To.Equal(foo.Details?.Details);
                 Expect(foo).To!.Deep.Equal(result);
             }
+
+            [TestFixture]
+            public class WhenMappingPropertiesWithNullMembers
+            {
+                [Test]
+                public void ShouldSetMappedValueToNull()
+                {
+                    // arrange
+                    var foo = GetRandom<Foo>();
+                    foo.Details = null;
+                    // act
+                    foo.MapTo(new Foo());
+                    // assert
+                    Expect(foo.Details).To.Be.Null();
+                }
+            }
         }
 
 
         [TestFixture]
         public class WhenMappingWithOverrides
         {
-            [Test]
-            public void WhenPropertiesAreGetAndSet()
+            [TestFixture]
+            public class WhenMappingPropertiesWithNullMembers
             {
-                // arrange
-                var randomId = GetRandomInt(1000);
-                var foo = GetRandom<Foo>();
-                var secondFoo = new Foo
+                [Test]
+                public void ShouldSetMappedValueToNull()
                 {
-                    Id = randomId,
-                    Additional = GetRandomString(),
-                    Details = new FooDetails
+                    // arrange
+                    var foo = GetRandom<Foo>();
+                    // act
+                    foo.MapTo(new Foo
                     {
-                        Details = GetRandomString()
-                    },
-                    Name = GetRandomString()
-                };
-                // act
-                var fooId = foo.Id;
-                foo.MapTo(secondFoo, f => { return new[] { nameof(f.Id) }; });
-                // arrange
-                Expect(secondFoo.Name).To.Equal(foo.Name);
-                Expect(secondFoo.Id).To.Equal(randomId);
-                Expect(secondFoo.Id).To.Not.Equal(fooId);
-                Expect(secondFoo.Details?.Details).To.Equal(foo.Details?.Details);
+                        Details = null
+                    }, f => new []{nameof(f.Details)});
+                    // assert
+                    Expect(foo.Details).To.Be.Null();
+                }
+            }
+
+            [TestFixture]
+            public class WhenPropertiesAreGetAndSet
+            {
+                [Test]
+                public void ShouldMap()
+                {
+                    // arrange
+                    var randomId = GetRandomInt(1000);
+                    var foo = GetRandom<Foo>();
+                    var secondFoo = new Foo
+                    {
+                        Id = randomId,
+                        Additional = GetRandomString(),
+                        Details = new FooDetails
+                        {
+                            Details = GetRandomString()
+                        },
+                        Name = GetRandomString()
+                    };
+                    // act
+                    var fooId = foo.Id;
+                    foo.MapTo(secondFoo, f => { return new[] { nameof(f.Id) }; });
+                    // arrange
+                    Expect(secondFoo.Name).To.Equal(foo.Name);
+                    Expect(secondFoo.Id).To.Equal(randomId);
+                    Expect(secondFoo.Id).To.Not.Equal(fooId);
+                    Expect(secondFoo.Details?.Details).To.Equal(foo.Details?.Details);
+                }
             }
 
             [TestFixture]
@@ -182,8 +220,8 @@ public class ReadOnlyFooDto
     }
     
     public int Id { get; }
-    public string Name { get; }
-    
+    public string? Name { get; }
+
     public FooDetails? Details { get; init; }
 }
 

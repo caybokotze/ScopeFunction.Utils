@@ -64,7 +64,10 @@ namespace ScopeFunction.Utils
                 throw new NullReferenceException("Can not configure entity mappings for a null object");
             }
             
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<TSource, TDestination>(); });
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<TSource, TDestination>();
+            });
 
             var mapper = new Mapper(config);
 
@@ -78,11 +81,7 @@ namespace ScopeFunction.Utils
                 }
                 
                 var destinationValue = destination.GetType().GetProperty(property.Name)?.GetValue(destination);
-                if (destinationValue is null)
-                {
-                    continue;
-                }
-                
+
                 property.SetValue(source, destinationValue);
             }
 
