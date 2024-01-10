@@ -6,12 +6,12 @@
         <Description>Basic utlities that are used for common tasks within dotnet.</Description>
         <Copyright>Merge Digital</Copyright>
         <PackageProjectUrl>https://github.com/caybokotze/scopefunction.utils</PackageProjectUrl>
-        <PackageVersion>1.3.2</PackageVersion>
+        <PackageVersion>1.4.0</PackageVersion>
         <PackageLicenseFile>license.txt</PackageLicenseFile>
         <PackageLicense>https://raw.githubusercontent.com/caybokotze/scopefunction.utils/master/scopefunction.utils/license.txt</PackageLicense>
         <RepositoryUrl>https://github.com/caybokotze/scopefunction.utils</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
-        <PackageReleaseNotes>Null values are also mapped across to the new entity</PackageReleaseNotes>
+        <PackageReleaseNotes>Add remove special character functionality</PackageReleaseNotes>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
