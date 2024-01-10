@@ -2,10 +2,13 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6c24008d_002Da400_002D48f6_002Dac0b_002D769cc636b43a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ShouldStillReflectivelyMapValues" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::734A7A8E-4603-47BF-9689-A5A42A94AF09::net6.0::ScopeFunction.Utils.Tests.MapToTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::734A7A8E-4603-47BF-9689-A5A42A94AF09::net6.0::ScopeFunction.Utils.Tests.StringHelperTests+RemoveSpecialCharacters+WhenDiacriticsShouldBeRemoved.ShouldReplaceDiacritic&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7b23204f_002Db6f8_002D4892_002Da157_002Dcb52cffb8f27/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ShouldStillReflectivelyMapValues #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::734A7A8E-4603-47BF-9689-A5A42A94AF09::net6.0::ScopeFunction.Utils.Tests.MapToTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::734A7A8E-4603-47BF-9689-A5A42A94AF09::net6.0::ScopeFunction.Utils.Tests.StringHelperTests+RemoveSpecialCharacters+WhenDiacriticsShouldBeRemoved.ShouldReplaceDiacritic&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::734A7A8E-4603-47BF-9689-A5A42A94AF09::net6.0::ScopeFunction.Utils.Tests.StringHelperTests+RemoveSpecialCharacters+WhenDiacriticsShouldBeRemoved+WhenCombinedWithDiacriticsAndNormalCharacters.ShouldReplaceOnlyDiacritics&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
